@@ -20,8 +20,12 @@
 .hero__figure-wrap{position:absolute;inset:0;z-index:2;
   transform:translate3d(var(--bx,0px),var(--by,0px),0) scale(var(--bs,1));transform-origin:68% 52%;will-change:transform;pointer-events:none}
 .hero__figure{position:absolute;width:100%;height:114%;top:-3%;left:0;object-fit:cover;object-position:center top;transform:translateY(var(--fig-extra,0px))}
-/* Second photo (light from the right) — sits exactly on top of the first and fades in */
-.hero__figure--right{opacity:var(--relight,0);will-change:opacity}
+/* True cross-fade between the two lightings: left photo = 1 − r, right photo = r.
+   plus-lighter adds both layers (inside an isolated group), so together they are always 100% opaque —
+   at the midpoint 50% + 50% = 100%, the background never shows through the body. */
+.hero__figure-wrap picture:first-of-type .hero__figure{opacity:calc(1 - var(--relight,0))}
+.hero__figure--right{opacity:var(--relight,0);mix-blend-mode:plus-lighter}
+.hero__figure-wrap{isolation:isolate}
 .hero__cv{position:absolute;inset:0;overflow:visible;opacity:var(--cv,0);transition:opacity .08s linear}
 .hero__cv svg{width:100%;height:100%;overflow:visible}
 .hero__cv text{font-family:monospace;letter-spacing:1.2px;font-size:9px;fill:#fff}
