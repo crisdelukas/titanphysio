@@ -172,11 +172,12 @@ p+p{margin-top:12px}
 
 
 /* ---------- the practice (gallery) ---------- */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cream-25);border:1px solid var(--cream-25)}
-.gallery__item{position:relative;aspect-ratio:4/3;margin:0;overflow:hidden;background:linear-gradient(160deg,#4a1f0b,#1b0d06)}
-.gallery__item img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+/* justified rows: every photo keeps its own proportions (flex-grow = width / height, set inline) */
+.gallery{display:flex;flex-direction:column;gap:1px;background:var(--cream-25);border:1px solid var(--cream-25)}
+.gallery__row{display:flex;gap:1px}
+.gallery__item{flex-basis:0;margin:0;overflow:hidden;background:var(--bark)}
+.gallery__item img{width:100%;height:auto;transition:transform 1.2s var(--ease)}
 .gallery__item:hover img{transform:scale(1.04)}
-.gallery__item .mono{position:absolute;left:16px;bottom:14px;color:var(--cream-60);font-size:11px}
 .practice__links{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px}
 
 /* ---------- faq ---------- */
@@ -240,7 +241,6 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
   .grid-2{grid-template-columns:1fr}
   .sticky-col{position:static}
   .cards-3{grid-template-columns:1fr}
-  .gallery{grid-template-columns:1fr 1fr}
   .about{background:linear-gradient(to bottom,#8f3a26 0%,#7d2f1c 55%,var(--bark) 100%)}
   .about::after{background:radial-gradient(ellipse 90% 60% at 50% 35%,transparent 45%,rgba(36,19,10,.6) 100%)}
   .about__stage{grid-template-columns:1fr;padding-bottom:clamp(80px,12vw,120px);gap:0}
@@ -259,6 +259,8 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
   .svc__head{grid-template-columns:44px 1fr 22px}
   .svc__body>p{padding-left:60px}
   .form,.info{grid-template-columns:1fr}
+  .gallery__row{flex-direction:column}
+  .gallery__item{flex:none!important}
   .counter{display:none}
 }
 @media (prefers-reduced-motion:reduce){
