@@ -73,3 +73,17 @@
   .hero__cv{opacity:.85!important}
   .hero__headline{opacity:1!important;transform:none!important}
 }
+
+/* ---------- mobile: compact hero (after the reduced-motion block so it wins there too) ----------
+   No long sticky scroll on phones: the hero is only as tall as body + fade + headline,
+   and the headline sits over the zone where the body dissolves into the light. */
+@media (max-width:700px){
+  .hero-stage{height:auto}
+  .hero{position:relative;height:clamp(500px,138vw,760px)}
+  .hero__headline{bottom:84px}
+  /* permanent soft fade at the bottom → seamless join with "Our approach" */
+  .hero__fade{opacity:1;background:linear-gradient(to bottom,transparent 62%,var(--bark,#24130a) 100%)}
+  /* bottom bar on one line: the scroll meter is dropped here (no sticky scroll on phones) */
+  .hero__bottom{font-size:9px;gap:16px;white-space:nowrap}
+  .hero__meter{display:none}
+}
