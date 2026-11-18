@@ -17,7 +17,11 @@
     // Timing windows
     cvIn: [0.12, 0.18],     // annotations: start, duration
     titleDim: [0.78, 0.22, 0.22], // start, duration, max dim (headline stays visible)
-    titleLift: -12,         // px
+    // Headline rises while scrolling, up to this fraction of the body photo's height (0.25 ≈ mid-forearm)
+    lift: [0.12, 0.60],     // start, end (0–1)
+    liftTo: 0.25,
+    // Aaron's info appears under the paragraph while the headline rises
+    info: [0.38, 0.62],     // start, end (0–1)
     fadeOut: [0.84, 0.16]   // exit fade into "Our approach"
   };
 
@@ -28,6 +32,10 @@
   const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
   const bezier = ([p0, p1, p2, p3], t) => { const u = 1 - t; return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3; };
   const set = (k, v) => hero.style.setProperty(k, v);
+  const ease = t => t * t * (3 - 2 * t);
+  const figure = hero.querySelector('.hero__figure');
+  const headline = hero.querySelector('.hero__headline');
+  const aaron = hero.querySelector('.hero__aaron');
 
   let pending = false, lastP = -1, lastW = 0, lastH = 0;
 
@@ -57,7 +65,17 @@
 
     set('--cv', clamp((p - C.cvIn[0]) / C.cvIn[1]).toFixed(3));
     set('--title-opacity', (1 - C.titleDim[2] * clamp((p - C.titleDim[0]) / C.titleDim[1])).toFixed(3));
-    set('--title-y', `${C.titleLift * p}px`);
+    // distance from the headline's resting position to the target height on the photo
+    let rise = 0;
+    if (stage.offsetHeight > innerHeight + 1) {            // only in the sticky (desktop/tablet) layout
+      const imgH = Math.max(figure.offsetHeight, figure.offsetWidth * 1152 / 2048); // object-fit: cover
+      const target = figure.offsetTop + C.liftTo * imgH;
+      rise = Math.min(0, target - headline.offsetTop);
+    }
+    set('--title-y', `${(rise * ease(clamp((p - C.lift[0]) / (C.lift[1] - C.lift[0])))).toFixed(1)}px`);
+    const info = rise ? ease(clamp((p - C.info[0]) / (C.info[1] - C.info[0]))) : 0;
+    set('--info', info.toFixed(3));
+    aaron.classList.toggle('is-on', info > .6);
     set('--fade', clamp((p - C.fadeOut[0]) / C.fadeOut[1]).toFixed(3));
     set('--meter', `${(p * 100).toFixed(1)}%`);
   }
