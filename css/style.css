@@ -149,6 +149,15 @@ p+p{margin-top:12px}
 .review p{font-size:20px;line-height:1.4;margin-bottom:auto}
 .review footer{color:var(--cream-60);padding-top:28px}
 
+
+/* ---------- the practice (gallery) ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cream-25);border:1px solid var(--cream-25)}
+.gallery__item{position:relative;aspect-ratio:4/3;margin:0;overflow:hidden;background:linear-gradient(160deg,#4a1f0b,#1b0d06)}
+.gallery__item img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.gallery__item:hover img{transform:scale(1.04)}
+.gallery__item .mono{position:absolute;left:16px;bottom:14px;color:var(--cream-60);font-size:11px}
+.practice__links{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px}
+
 /* ---------- faq ---------- */
 .faq__list{border-top:1px solid var(--cream-25)}
 details{border-bottom:1px solid var(--cream-25)}
@@ -211,6 +220,7 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
   .grid-2{grid-template-columns:1fr}
   .sticky-col{position:static}
   .cards-3{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
   .card,.review{min-height:0}
   .footer__grid{grid-template-columns:1fr 1fr}
   .footer__brand{grid-column:1/-1}
