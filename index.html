@@ -61,7 +61,11 @@
         <source type="image/webp" srcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" sizes="(max-width:700px) 160vw, 100vw">
         <img class="hero__figure" src="assets/img/hero-body.png" width="2048" height="1152" alt="Athlete stretching with arms overhead" fetchpriority="high" decoding="async">
       </picture>
-      <div class="hero__skin-light" aria-hidden="true"></div>
+      <!-- Same body lit from the right: cross-fades in while scrolling (opacity driven by js/hero.js) -->
+      <picture>
+        <source type="image/webp" srcset="assets/img/hero-body-right-1280.webp 1280w, assets/img/hero-body-right.webp 3840w" sizes="(max-width:700px) 160vw, 100vw">
+        <img class="hero__figure hero__figure--right" src="assets/img/hero-body-right.png" width="2048" height="1152" alt="" aria-hidden="true" decoding="async" fetchpriority="low">
+      </picture>
       <div class="hero__cv" aria-hidden="true"><svg viewBox="0 0 2048 1152" preserveAspectRatio="xMidYMid slice"><g><rect x="1175" y="538" width="112" height="96"/><path d="M1175 538 L1125 499 L1037 499"/><circle class="anchor" cx="1175" cy="538" r="3"/><text x="1035" y="480">SCAPULAR REGION / 01</text></g><g><path d="M1655 470 L1715 405 L1850 405"/><rect x="1649" y="464" width="12" height="12"/><text x="1715" y="388">SHOULDER FLEXION</text></g><g><rect x="1042" y="267" width="9" height="9"/><rect x="1524" y="193" width="9" height="9"/><rect x="1380" y="783" width="9" height="9"/></g></svg></div>
     </div>
     <div class="hero__headline">
