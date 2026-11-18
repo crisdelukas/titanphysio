@@ -11,7 +11,8 @@
   const counter = $('.counter');
   const onScrollHeader = () => {
     const end = stage ? stage.offsetTop + stage.offsetHeight - innerHeight : 0;
-    header.classList.toggle('is-solid', scrollY > Math.max(40, end + innerHeight - header.offsetHeight));
+    const sticky = stage && stage.offsetHeight > innerHeight + 1; // compact (non-sticky) hero on phones
+    header.classList.toggle('is-solid', sticky ? scrollY > end + innerHeight - header.offsetHeight : scrollY > 40);
     counter.classList.toggle('is-hidden', scrollY < end + innerHeight * .5);
   };
 

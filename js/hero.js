@@ -35,9 +35,12 @@
   function update() {
     pending = false;
     const rect = stage.getBoundingClientRect();
-    const range = Math.max(1, stage.offsetHeight - innerHeight);
-    const p = clamp(-rect.top / range);
-    const w = innerWidth, h = innerHeight;
+    // Sticky mode (desktop/tablet): progress over the extra stage height.
+    // Compact mode (mobile, stage no taller than the screen): progress while the hero scrolls away.
+    const extra = stage.offsetHeight - innerHeight;
+    const range = extra > 1 ? extra : stage.offsetHeight;
+    const p = clamp(-rect.top / Math.max(1, range));
+    const w = innerWidth, h = hero.clientHeight;
     if (p === lastP && w === lastW && h === lastH) return; // nothing changed
     lastP = p; lastW = w; lastH = h;
     const C = CONFIG;
