@@ -11,10 +11,9 @@
     bodyX: -22,             // px
     bodyY: -32,             // px
     bodyScale: 0.065,
-    // Light on the skin (moves inside the body mask)
-    skinX: [68, 7],         // start %, delta %
-    skinY: [41, -7],
-    skinOpacity: [0.15, 0.32], // base + peak (sine over the scroll)
+    // Relighting: the right-lit photo fades in between these two points of the scroll
+    relight: [0.10, 0.70],  // start, end (0–1)
+    relightMax: 1,          // final opacity of the right-lit photo (like Photoshop's opacity slider)
     // Timing windows
     cvIn: [0.12, 0.18],     // annotations: start, duration
     titleDim: [0.78, 0.22, 0.22], // start, duration, max dim (headline stays visible)
@@ -53,9 +52,8 @@
     set('--by', `${C.bodyY * p}px`);
     set('--bs', (1 + C.bodyScale * p).toFixed(4));
 
-    set('--lx', `${C.skinX[0] + C.skinX[1] * p}%`);
-    set('--ly', `${C.skinY[0] + C.skinY[1] * p}%`);
-    set('--lo', (C.skinOpacity[0] + C.skinOpacity[1] * Math.sin(Math.PI * p)).toFixed(3));
+    const r = clamp((p - C.relight[0]) / (C.relight[1] - C.relight[0]));
+    set('--relight', (C.relightMax * r * r * (3 - 2 * r)).toFixed(3)); // smooth ease in/out
 
     set('--cv', clamp((p - C.cvIn[0]) / C.cvIn[1]).toFixed(3));
     set('--title-opacity', (1 - C.titleDim[2] * clamp((p - C.titleDim[0]) / C.titleDim[1])).toFixed(3));
