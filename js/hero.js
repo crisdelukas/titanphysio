@@ -21,7 +21,8 @@
     lift: [0.10, 0.50],     // start, end (0–1)
     liftTo: 0.25,
     // Aaron's info appears under the paragraph while the headline rises
-    info: [0.52, 0.66],     // starts once the headline has stopped rising
+    info: [0.52, 0.62],     // "Aaron Deza…" — starts once the headline has stopped rising
+    info2: [0.64, 0.74],    // "The practice…" — right after
     fadeOut: [0.84, 0.16]   // exit fade into "Our approach"
   };
 
@@ -35,7 +36,7 @@
   const ease = t => t * t * (3 - 2 * t);
   const figure = hero.querySelector('.hero__figure');
   const headline = hero.querySelector('.hero__headline');
-  const aaron = hero.querySelector('.hero__aaron');
+  const items = hero.querySelectorAll('.hero__item');
 
   let pending = false, lastP = -1, lastW = 0, lastH = 0;
 
@@ -73,9 +74,12 @@
       rise = Math.min(0, target - headline.offsetTop);
     }
     set('--title-y', `${(rise * ease(clamp((p - C.lift[0]) / (C.lift[1] - C.lift[0])))).toFixed(1)}px`);
-    const info = rise ? ease(clamp((p - C.info[0]) / (C.info[1] - C.info[0]))) : 0;
-    set('--info', info.toFixed(3));
-    aaron.classList.toggle('is-on', info > .6);
+    const step = ([a, b]) => rise ? ease(clamp((p - a) / (b - a))) : 0;
+    const i1 = step(C.info), i2 = step(C.info2);
+    set('--info', i1.toFixed(3));
+    set('--info2', i2.toFixed(3));
+    items[0].classList.toggle('is-on', i1 > .6);
+    items[1].classList.toggle('is-on', i2 > .6);
     set('--fade', clamp((p - C.fadeOut[0]) / C.fadeOut[1]).toFixed(3));
     set('--meter', `${(p * 100).toFixed(1)}%`);
   }
