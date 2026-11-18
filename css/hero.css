@@ -20,11 +20,12 @@
 .hero__figure-wrap{position:absolute;inset:0;z-index:2;
   transform:translate3d(var(--bx,0px),var(--by,0px),0) scale(var(--bs,1));transform-origin:68% 52%;will-change:transform;pointer-events:none}
 .hero__figure{position:absolute;width:100%;height:114%;top:-3%;left:0;object-fit:cover;object-position:center top;transform:translateY(var(--fig-extra,0px))}
-.hero__skin-light{position:absolute;inset:0;
+/* Same box + same fit as .hero__figure, so the light falls exactly on the body (no ghost outline) */
+.hero__skin-light{position:absolute;width:100%;height:114%;top:-3%;left:0;
   background:radial-gradient(ellipse 28% 52% at var(--lx,69%) var(--ly,42%),rgba(255,188,100,.34),transparent 75%);
   mix-blend-mode:screen;opacity:var(--lo,.24);
-  -webkit-mask-image:url('../assets/img/hero-body.webp');-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;
-  mask-image:url('../assets/img/hero-body.webp');mask-size:100% 100%;mask-repeat:no-repeat;pointer-events:none}
+  -webkit-mask-image:url('../assets/img/hero-body.webp');-webkit-mask-size:cover;-webkit-mask-position:center top;-webkit-mask-repeat:no-repeat;
+  mask-image:url('../assets/img/hero-body.webp');mask-size:cover;mask-position:center top;mask-repeat:no-repeat;pointer-events:none}
 .hero__cv{position:absolute;inset:0;overflow:visible;opacity:var(--cv,0);transition:opacity .08s linear}
 .hero__cv svg{width:100%;height:100%;overflow:visible}
 .hero__cv text{font-family:monospace;letter-spacing:1.2px;font-size:9px;fill:#fff}
@@ -51,7 +52,11 @@
 /* ---------- mobile (v0.3 values) ---------- */
 @media (max-width:700px){
   .hero{min-height:0}
-  .hero__figure{width:160%;height:125%;max-width:none;left:-35%;top:-4%;object-fit:contain;object-position:center top}
+  /* Box = photo proportions, so the fade below is measured on the photo itself.
+     The lower edge of the photo dissolves into the light instead of ending in a hard cut. */
+  .hero__figure{width:160%;height:auto;aspect-ratio:2048/1152;max-width:none;left:-35%;top:-4%;
+    -webkit-mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.55) 74%,transparent 97%);
+            mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.55) 74%,transparent 97%)}
   .hero__skin-light{display:none}
   .hero__halo{width:125vw}
   .hero__headline{bottom:110px;width:82vw}
