@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
-  <link rel="stylesheet" href="css/hero.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/hero.css?v=7">
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" imagesizes="(max-width:700px) 160vw, 100vw">
 </head>
 <body>
@@ -72,9 +72,17 @@
       <h1>Your wellbeing,<br>our purpose.</h1>
       <p>Personalised physiotherapy for movement,<br>recovery and long-term wellbeing.</p>
       <!-- Appears below the paragraph while the headline rises (desktop/tablet) -->
+      <!-- Appear one after the other below the paragraph, once the headline has stopped rising -->
       <div class="hero__aaron">
-        <p class="hero__aaron-name">Aaron Deza, physiotherapist</p>
-        <a class="hero__aaron-link" href="#about">Meet Aaron →</a>
+        <div class="hero__item" data-step="1">
+          <p class="hero__aaron-name">Aaron Deza, physiotherapist</p>
+          <a class="hero__aaron-link" href="#about">Meet Aaron →</a>
+        </div>
+        <div class="hero__item" data-step="2">
+          <p class="hero__aaron-name">The practice, Basel</p>
+          <a class="hero__aaron-link" href="#practice">See the practice →</a>
+          <a class="hero__aaron-link" href="https://www.google.com/maps/search/?api=1&amp;query=Allschwilerstrasse+14+4055+Basel" target="_blank" rel="noopener">Directions ↗</a>
+        </div>
       </div>
     </div>
     <div class="hero__bottom" aria-hidden="true">
@@ -262,8 +270,28 @@
   </div>
 </section>
 
+<!-- ============ THE PRACTICE ============ -->
+<section class="practice section" id="practice" data-index="07">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow reveal">The practice</p>
+      <h2 class="h2 reveal">Allschwilerstrasse 14, Basel.</h2>
+    </div>
+    <!-- Replace each placeholder with <img src="assets/img/practice-1.webp" alt="…" loading="lazy"> -->
+    <div class="gallery">
+      <figure class="gallery__item reveal todo"><span class="mono">Photo 1</span></figure>
+      <figure class="gallery__item reveal todo"><span class="mono">Photo 2</span></figure>
+      <figure class="gallery__item reveal todo"><span class="mono">Photo 3</span></figure>
+      <figure class="gallery__item reveal todo"><span class="mono">Photo 4</span></figure>
+      <figure class="gallery__item reveal todo"><span class="mono">Photo 5</span></figure>
+      <figure class="gallery__item reveal todo"><span class="mono">Photo 6</span></figure>
+    </div>
+    <p class="practice__links reveal"><a class="link-mono" href="https://www.google.com/maps/search/?api=1&amp;query=Allschwilerstrasse+14+4055+Basel" target="_blank" rel="noopener">Directions ↗</a> <a class="link-mono" href="#contact">Book a session →</a></p>
+  </div>
+</section>
+
 <!-- ============ CONTACT ============ -->
-<section class="contact section" id="contact" data-index="07">
+<section class="contact section" id="contact" data-index="08">
   <div class="wrap grid-2">
     <div>
       <p class="eyebrow reveal">Contact</p>
@@ -320,9 +348,9 @@
   <div class="footer__iso iso" aria-hidden="true"></div>
 </footer>
 
-<div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 07 <span class="counter__bar"><i id="counter-bar"></i></span></div>
+<div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 08 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
-<script src="js/hero.js?v=6" defer></script>
-<script src="js/main.js?v=6" defer></script>
+<script src="js/hero.js?v=7" defer></script>
+<script src="js/main.js?v=7" defer></script>
 </body>
 </html>
