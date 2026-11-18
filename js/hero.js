@@ -18,10 +18,10 @@
     cvIn: [0.12, 0.18],     // annotations: start, duration
     titleDim: [0.78, 0.22, 0.22], // start, duration, max dim (headline stays visible)
     // Headline rises while scrolling, up to this fraction of the body photo's height (0.25 ≈ mid-forearm)
-    lift: [0.12, 0.60],     // start, end (0–1)
+    lift: [0.10, 0.50],     // start, end (0–1)
     liftTo: 0.25,
     // Aaron's info appears under the paragraph while the headline rises
-    info: [0.38, 0.62],     // start, end (0–1)
+    info: [0.52, 0.66],     // starts once the headline has stopped rising
     fadeOut: [0.84, 0.16]   // exit fade into "Our approach"
   };
 
