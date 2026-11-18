@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
-  <link rel="stylesheet" href="css/hero.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/hero.css?v=8">
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" imagesizes="(max-width:700px) 160vw, 100vw">
 </head>
 <body>
@@ -171,22 +171,24 @@
 </section>
 
 <!-- ============ ABOUT ============ -->
-<section class="about section" id="about" data-index="04">
-  <div class="wrap grid-2">
-    <div class="about__visual reveal">
-      <div class="iso" aria-hidden="true"></div>
-      <p class="mono about__caption">Portrait — to be replaced</p>
-    </div>
-    <div>
+<section class="about" id="about" data-index="04">
+  <div class="about__stage">
+    <div class="about__side about__side--left">
       <p class="eyebrow reveal">About</p>
-      <h2 class="h2 reveal">Aaron Deza Frasquet</h2>
-      <p class="mono muted reveal">Physiotherapist</p>
-      <p class="lead reveal">Qualified physiotherapist specialising in sports physiotherapy and pelvic floor therapy, with expertise in dry needling, electro-needling and percutaneous neuromodulation.</p>
-      <p class="reveal">He also offers guidance on nutrition and sports science, so treatment connects with how you train, eat and live.</p>
+      <h2 class="about__name reveal">Aaron Deza<br>Frasquet</h2>
+    </div>
+    <picture class="about__photo">
+      <source type="image/webp" srcset="assets/img/aaron.webp">
+      <img src="assets/img/aaron.jpg" width="1122" height="1402" alt="Aaron Deza Frasquet, physiotherapist at Titan Physio" loading="lazy" decoding="async">
+    </picture>
+    <div class="about__side about__side--right">
+      <p class="mono reveal">Physiotherapist</p>
+      <p class="about__lead reveal">Specialised in sports physiotherapy and pelvic floor therapy, with expertise in dry needling, electro-needling and percutaneous neuromodulation.</p>
+      <p class="about__txt reveal">He also offers guidance on nutrition and sports science, so treatment connects with how you train, eat and live.</p>
       <ul class="tags reveal">
         <li>Sports physiotherapy</li><li>Pelvic floor</li><li>Dry needling</li><li>Neuromodulation</li><li class="todo">Languages: to confirm</li>
       </ul>
-      <a class="btn btn--line reveal" href="#contact">Contact Aaron <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--line reveal" href="#contact">Book a session <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -350,7 +352,7 @@
 
 <div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 08 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
-<script src="js/hero.js?v=7" defer></script>
-<script src="js/main.js?v=7" defer></script>
+<script src="js/hero.js?v=8" defer></script>
+<script src="js/main.js?v=8" defer></script>
 </body>
 </html>
