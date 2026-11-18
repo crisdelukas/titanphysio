@@ -4,9 +4,16 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Header turns solid after scrolling */
+  /* Header stays transparent over the hero scene, turns solid afterwards.
+     The section counter is hidden while the hero's own scroll meter is visible. */
   const header = $('#header');
-  const onScrollHeader = () => header.classList.toggle('is-solid', scrollY > 40);
+  const stage = $('.hero-stage');
+  const counter = $('.counter');
+  const onScrollHeader = () => {
+    const end = stage ? stage.offsetTop + stage.offsetHeight - innerHeight : 0;
+    header.classList.toggle('is-solid', scrollY > Math.max(40, end + innerHeight - header.offsetHeight));
+    counter.classList.toggle('is-hidden', scrollY < end + innerHeight * .5);
+  };
 
   /* Mobile menu */
   const burger = $('.burger'), menu = $('#mobile-menu');
@@ -52,19 +59,15 @@
   }), { rootMargin: '-45% 0px -50% 0px' });
   sections.forEach(s => secIO.observe(s));
 
-  /* Scroll-linked parallax (writes --p from 0..1 per element) */
-  const heroImg = $('.hero__img'), hero = $('.hero');
+  /* Scroll-linked parallax for the image band (hero motion lives in js/hero.js) */
   const parallax = $$('.parallax');
   let ticking = false;
   const frame = () => {
     ticking = false;
     onScrollHeader();
     const max = document.documentElement.scrollHeight - innerHeight;
-    counterBar.parentElement.style.setProperty('--prog', max > 0 ? scrollY / max : 0);
     counterBar.style.setProperty('--prog', max > 0 ? scrollY / max : 0);
     if (reduce) return;
-    const hp = Math.min(1, scrollY / hero.offsetHeight);
-    heroImg.style.setProperty('--p', hp.toFixed(3));
     parallax.forEach(el => {
       const r = el.parentElement.getBoundingClientRect();
       const p = (innerHeight - r.top) / (innerHeight + r.height); // 0 → 1 while crossing viewport

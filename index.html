@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 2048w" imagesizes="(max-width:700px) 160vw, 100vw">
 </head>
 <body>
 
@@ -50,28 +52,28 @@
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="top" data-index="01">
-  <div class="hero__media" aria-hidden="true">
-    <img src="assets/img/hero-placeholder.jpg" alt="" class="hero__img" fetchpriority="high">
-    <span class="hud-dot" style="--x:58%;--y:34%"></span>
-    <span class="hud-dot" style="--x:64%;--y:52%"></span>
-    <span class="hud-dot" style="--x:47%;--y:63%"></span>
-    <div class="hud-frame" style="--x:72%;--y:44%">
-      <span class="mono">Scapular control</span>
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><i class="cross"></i>
+<!-- ============ HERO (v0.3 — layered scroll scene) ============ -->
+<section class="hero-stage" id="top" data-index="01">
+  <div class="hero" id="hero">
+    <div class="hero__halo" aria-hidden="true"></div>
+    <div class="hero__figure-wrap">
+      <picture>
+        <source type="image/webp" srcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 2048w" sizes="(max-width:700px) 160vw, 100vw">
+        <img class="hero__figure" src="assets/img/hero-body.png" width="2048" height="1152" alt="Athlete stretching with arms overhead" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero__skin-light" aria-hidden="true"></div>
+      <div class="hero__cv" aria-hidden="true"><svg viewBox="0 0 2048 1152" preserveAspectRatio="xMidYMid slice"><g><rect x="1175" y="538" width="112" height="96"/><path d="M1175 538 L1125 499 L1037 499"/><circle class="anchor" cx="1175" cy="538" r="3"/><text x="1035" y="480">SCAPULAR REGION / 01</text></g><g><path d="M1655 470 L1715 405 L1850 405"/><rect x="1649" y="464" width="12" height="12"/><text x="1715" y="388">SHOULDER FLEXION</text></g><g><rect x="1042" y="267" width="9" height="9"/><rect x="1524" y="193" width="9" height="9"/><rect x="1380" y="783" width="9" height="9"/></g></svg></div>
     </div>
-  </div>
-  <div class="hero__content">
-    <p class="eyebrow reveal">Physiotherapy <span class="slash">/</span> Basel</p>
-    <h1 class="hero__title reveal">Care in every<br>movement.</h1>
-    <p class="hero__lead reveal">Your wellbeing is our purpose. Personalised physiotherapy for movement, recovery and long-term performance.</p>
-    <div class="hero__ctas reveal">
-      <a class="btn btn--line" href="#contact">Book a session <span class="arrow" aria-hidden="true">→</span></a>
-      <a class="link-mono" href="#services">Explore services</a>
+    <div class="hero__headline">
+      <h1>Your wellbeing,<br>our purpose.</h1>
+      <p>Personalised physiotherapy for movement,<br>recovery and long-term wellbeing.</p>
     </div>
+    <div class="hero__bottom" aria-hidden="true">
+      <span>01 / THE BODY IN MOTION</span>
+      <div class="hero__meter-wrap">SCROLL TO EXPLORE <span class="hero__meter"><i></i></span></div>
+    </div>
+    <div class="hero__fade" aria-hidden="true"></div>
   </div>
-  <a class="scroll-cue" href="#approach" aria-label="Scroll down">↓</a>
 </section>
 
 <!-- ============ APPROACH ============ -->
@@ -311,6 +313,7 @@
 
 <div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 07 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
+<script src="js/hero.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
