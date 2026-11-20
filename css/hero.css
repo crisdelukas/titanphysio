@@ -18,7 +18,8 @@
 
 /* Layer 2 — transparent body (two lightings) + computer-vision annotations (move together) */
 .hero__figure-wrap{position:absolute;inset:0;z-index:2;
-  transform:translate3d(var(--bx,0px),var(--by,0px),0) scale(var(--bs,1));transform-origin:68% 52%;will-change:transform;pointer-events:none}
+  transform:translate3d(var(--bx,0px),var(--by,0px),0) scale(var(--bs,1));transform-origin:68% 52%;pointer-events:none}
+/* no will-change here: Chrome mis-sizes the layer around the SVG labels and clips their first letters */
 .hero__figure{position:absolute;width:100%;height:114%;top:-3%;left:0;object-fit:cover;object-position:center top;transform:translateY(var(--fig-extra,0px))}
 /* True cross-fade between the two lightings: left photo = 1 − r, right photo = r.
    plus-lighter adds both layers (inside an isolated group), so together they are always 100% opaque —
@@ -27,12 +28,14 @@
 .hero__figure--right{opacity:var(--relight,0);mix-blend-mode:plus-lighter}
 .hero__figure-wrap{isolation:isolate}
 /* same box + fit as the photo (cover, top-aligned), so annotation coordinates = photo pixels */
+.hero__cv-wrap{position:absolute;inset:0;z-index:3;pointer-events:none;
+  transform:translate3d(var(--bx,0px),var(--by,0px),0) scale(var(--bs,1));transform-origin:68% 52%;will-change:transform}
 .hero__cv{position:absolute;width:100%;height:114%;top:-3%;left:0;overflow:visible;opacity:var(--cv,0);transition:opacity .08s linear}
 .hero__cv svg{width:100%;height:100%;overflow:visible}
-.hero__cv text{font-family:var(--mono,monospace);letter-spacing:1.2px;font-size:9px;fill:#fff;
-  paint-order:stroke;stroke:rgba(45,16,6,.45);stroke-width:2.4px;stroke-linejoin:round}
+.hero__cv text{font-family:var(--mono,monospace);letter-spacing:1.2px;font-size:9.9px;fill:#fff}
 .hero__cv path,.hero__cv rect,.hero__cv circle{stroke:#fff;stroke-width:.55;fill:none;vector-effect:non-scaling-stroke}
 .hero__cv .anchor{fill:#fff;stroke:none}
+.hero__cv .bounds{stroke:none;fill:#fff;fill-opacity:.001}
 
 /* Headline (typography from titan-hero-demo.html, position from v0.3) */
 .hero__headline{position:absolute;z-index:5;left:clamp(24px,4.5vw,80px);bottom:clamp(90px,12vh,150px);width:min(51vw,690px);
@@ -72,7 +75,7 @@
             mask-image:linear-gradient(to bottom,#000 52%,rgba(0,0,0,.55) 74%,transparent 97%)}
   .hero__halo{width:125vw}
   .hero__headline{bottom:110px;width:82vw}
-  .hero__cv{display:none}
+  .hero__cv-wrap{display:none}
   .hero__bottom{left:24px;right:24px}
 }
 
@@ -80,7 +83,7 @@
 @media (prefers-reduced-motion:reduce){
   .hero-stage{height:100svh}
   .hero{position:relative}
-  .hero__halo,.hero__figure-wrap{transform:none!important}
+  .hero__halo,.hero__figure-wrap,.hero__cv-wrap{transform:none!important}
   .hero__fade{opacity:0!important}
   .hero__cv{opacity:.85!important}
   .hero__headline{opacity:1!important;transform:none!important}
