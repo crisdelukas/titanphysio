@@ -13,9 +13,41 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=10">
-  <link rel="stylesheet" href="css/hero.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/hero.css?v=11">
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" imagesizes="(max-width:700px) 160vw, 100vw">
+  <!-- Social sharing preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Titan Physio">
+  <meta property="og:title" content="Titan Physio — Physiotherapy in Basel">
+  <meta property="og:description" content="Personalised physiotherapy in Basel: manual therapy, sports physiotherapy, pelvic floor therapy, dry needling and percutaneous neuromodulation.">
+  <meta property="og:image" content="https://titanphysio.ch/assets/img/aaron.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Structured data for Google (business card in search / Maps) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physiotherapy",
+    "name": "Titan Physio",
+    "url": "https://titanphysio.ch/",
+    "image": "https://titanphysio.ch/assets/img/aaron.jpg",
+    "telephone": "+41 78 340 58 28",
+    "email": "aaron.deza@hin.physio",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Allschwilerstrasse 14",
+      "postalCode": "4055",
+      "addressLocality": "Basel",
+      "addressCountry": "CH"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "06:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+    ],
+    "employee": { "@type": "Person", "name": "Aaron Deza Frasquet", "jobTitle": "Physiotherapist" },
+    "medicalSpecialty": "PhysicalTherapy"
+  }
+  </script>
 </head>
 <body>
 
@@ -66,7 +98,16 @@
         <source type="image/webp" srcset="assets/img/hero-body-right-1280.webp 1280w, assets/img/hero-body-right.webp 3840w" sizes="(max-width:700px) 160vw, 100vw">
         <img class="hero__figure hero__figure--right" src="assets/img/hero-body-right.png" width="2048" height="1152" alt="" aria-hidden="true" decoding="async" fetchpriority="low">
       </picture>
-      <div class="hero__cv" aria-hidden="true"><svg viewBox="0 0 2048 1152" preserveAspectRatio="xMidYMid slice"><g><rect x="1175" y="538" width="112" height="96"/><path d="M1175 538 L1125 499 L1037 499"/><circle class="anchor" cx="1175" cy="538" r="3"/><text x="1035" y="480">SCAPULAR REGION / 01</text></g><g><path d="M1655 470 L1715 405 L1850 405"/><rect x="1649" y="464" width="12" height="12"/><text x="1715" y="388">SHOULDER FLEXION</text></g><g><rect x="1042" y="267" width="9" height="9"/><rect x="1524" y="193" width="9" height="9"/><rect x="1380" y="783" width="9" height="9"/></g></svg></div>
+      <div class="hero__cv" aria-hidden="true"><svg viewBox="0 0 2048 1152" preserveAspectRatio="xMidYMin slice">
+          <!-- Shoulder: glenohumeral flexion at end range (anchor on the right shoulder, label in the empty top-right) -->
+          <g><circle class="anchor" cx="1735" cy="560" r="3"/><path d="M1735 560 L1772 342 L1600 342"/><text x="1772" y="330" text-anchor="end">SHOULDER FLEXION · END RANGE</text></g>
+          <!-- Scapula: upward rotation needed to get the arm overhead -->
+          <g><rect x="1572" y="628" width="132" height="166"/><path d="M1572 794 L1548 852 L1700 852"/><text x="1552" y="842">SCAPULAR UPWARD ROTATION</text></g>
+          <!-- Thoracic spine: extension that allows the overhead reach -->
+          <g><path d="M1490 745 L1510 745 M1488 795 L1512 795 M1486 845 L1514 845"/><path d="M1488 795 L1452 822 L1300 822"/><text x="1448" y="812" text-anchor="end">THORACIC EXTENSION</text></g>
+          <!-- Small reference points: wrists, elbow, base of the neck -->
+          <g><rect x="1181" y="90" width="9" height="9"/><rect x="1051" y="210" width="9" height="9"/><rect x="1451" y="574" width="9" height="9"/></g>
+        </svg></div>
     </div>
     <div class="hero__headline">
       <h1>Your wellbeing,<br>our purpose.</h1>
@@ -86,8 +127,7 @@
       </div>
     </div>
     <div class="hero__bottom" aria-hidden="true">
-      <span>01 / THE BODY IN MOTION</span>
-      <div class="hero__meter-wrap">SCROLL TO EXPLORE <span class="hero__meter"><i></i></span></div>
+      <div class="hero__meter-wrap">Scroll to explore <span class="hero__meter"><i></i></span></div>
     </div>
     <div class="hero__fade" aria-hidden="true"></div>
   </div>
@@ -227,21 +267,6 @@
   </div>
 </section>
 
-<!-- ============ REVIEWS ============ -->
-<section class="reviews section" id="reviews">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">Patients</p>
-      <h2 class="h2 reveal">In their words.</h2>
-    </div>
-    <div class="cards-3">
-      <blockquote class="review reveal todo"><p>Placeholder — real Google reviews will go here once the Google Business Profile is live.</p><footer class="mono">Name · Google</footer></blockquote>
-      <blockquote class="review reveal todo"><p>Placeholder review.</p><footer class="mono">Name · Google</footer></blockquote>
-      <blockquote class="review reveal todo"><p>Placeholder review.</p><footer class="mono">Name · Google</footer></blockquote>
-    </div>
-  </div>
-</section>
-
 <!-- ============ RESOURCES ============ -->
 <section class="resources section" id="resources">
   <div class="wrap">
@@ -292,6 +317,14 @@
         <figure class="gallery__item reveal" style="flex-grow:0.7500"><img src="assets/img/practice-4.webp" width="1200" height="1600" alt="Gait-training treadmill by the window" loading="lazy" decoding="async"></figure>
         <figure class="gallery__item reveal" style="flex-grow:1.3333"><img src="assets/img/practice-5.webp" width="1600" height="1200" alt="Treatment room with therapy table" loading="lazy" decoding="async"></figure>
         <figure class="gallery__item reveal" style="flex-grow:0.7500"><img src="assets/img/practice-6.webp" width="1200" height="1600" alt="Exercise bikes by the window" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+    <!-- Map: loads Google Maps only after a click (privacy: no Google cookies until the visitor asks for the map) -->
+    <div class="map reveal" data-src="https://www.google.com/maps?q=Allschwilerstrasse%2014%2C%204055%20Basel&amp;z=16&amp;output=embed">
+      <div class="map__placeholder">
+        <p class="map__address">Titan Physio<br>Allschwilerstrasse 14<br>4055 Basel</p>
+        <button class="btn btn--line map__load" type="button">Show map <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="map__note">Loads Google Maps. Google may set cookies.</p>
       </div>
     </div>
     <p class="practice__links reveal"><a class="link-mono" href="https://www.google.com/maps/search/?api=1&amp;query=Allschwilerstrasse+14+4055+Basel" target="_blank" rel="noopener">Directions ↗</a> <a class="link-mono" href="#contact">Book a session →</a></p>
@@ -358,7 +391,7 @@
 
 <div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 08 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
-<script src="js/hero.js?v=10" defer></script>
-<script src="js/main.js?v=10" defer></script>
+<script src="js/hero.js?v=11" defer></script>
+<script src="js/main.js?v=11" defer></script>
 </body>
 </html>
