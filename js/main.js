@@ -79,6 +79,15 @@
   addEventListener('resize', frame);
   frame();
 
+  /* Map: insert the Google Maps iframe only when the visitor asks for it */
+  const map = $('.map');
+  if (map) $('.map__load', map).addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = map.dataset.src; f.title = 'Map: Titan Physio, Allschwilerstrasse 14, Basel';
+    f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+    map.appendChild(f); $('.map__placeholder', map).remove();
+  });
+
   /* Contact form: submit via fetch (Formspree), stay on page */
   const form = $('.form'), status = $('.form__status');
   form.addEventListener('submit', async ev => {
