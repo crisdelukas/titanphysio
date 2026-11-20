@@ -26,9 +26,10 @@
 .hero__figure-wrap picture:first-of-type .hero__figure{opacity:calc(1 - var(--relight,0))}
 .hero__figure--right{opacity:var(--relight,0);mix-blend-mode:plus-lighter}
 .hero__figure-wrap{isolation:isolate}
-.hero__cv{position:absolute;inset:0;overflow:visible;opacity:var(--cv,0);transition:opacity .08s linear}
+/* same box + fit as the photo (cover, top-aligned), so annotation coordinates = photo pixels */
+.hero__cv{position:absolute;width:100%;height:114%;top:-3%;left:0;overflow:visible;opacity:var(--cv,0);transition:opacity .08s linear}
 .hero__cv svg{width:100%;height:100%;overflow:visible}
-.hero__cv text{font-family:monospace;letter-spacing:1.2px;font-size:9px;fill:#fff}
+.hero__cv text{font-family:var(--mono,monospace);letter-spacing:1.2px;font-size:9px;fill:#fff}
 .hero__cv path,.hero__cv rect,.hero__cv circle{stroke:#fff;stroke-width:.55;fill:none;vector-effect:non-scaling-stroke}
 .hero__cv .anchor{fill:#fff;stroke:none}
 
@@ -46,12 +47,12 @@
 .hero__item[data-step="2"]{--a:var(--info2,0)}
 .hero__item.is-on{pointer-events:auto}
 .hero__headline .hero__aaron-name{font-size:clamp(18px,1.5vw,24px);letter-spacing:-.02em;margin:0}
-.hero__aaron-link{display:inline-block;margin:12px 22px 0 0;font-family:monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #ffffff66;padding-bottom:3px}
+.hero__aaron-link{display:inline-block;margin:12px 22px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:clamp(13px,1vw,15px);letter-spacing:.01em;border-bottom:1px solid #ffffff66;padding-bottom:3px}
 .hero__aaron-link:hover{border-color:#fff}
 
 /* Bottom bar + scroll meter */
 .hero__bottom{position:absolute;z-index:5;bottom:25px;left:clamp(24px,4.5vw,80px);right:clamp(24px,4.5vw,80px);
-  display:flex;justify-content:space-between;align-items:end;font-family:monospace;font-size:10px;letter-spacing:.14em}
+  display:flex;justify-content:flex-end;align-items:end;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:.01em}
 .hero__meter-wrap{display:flex;align-items:center;gap:12px}
 .hero__meter{width:70px;height:1px;background:#ffffff66}
 .hero__meter>i{display:block;height:100%;background:#fff;width:var(--meter,0%)}
@@ -99,6 +100,6 @@
   /* permanent soft fade at the bottom → seamless join with "Our approach" */
   .hero__fade{opacity:1;background:linear-gradient(to bottom,transparent 62%,var(--bark,#24130a) 100%)}
   /* bottom bar on one line: the scroll meter is dropped here (no sticky scroll on phones) */
-  .hero__bottom{font-size:9px;gap:16px;white-space:nowrap}
+  .hero__bottom{font-size:12px;white-space:nowrap}
   .hero__meter{display:none}
 }
