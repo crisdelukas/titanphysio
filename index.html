@@ -15,8 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=23">
-  <link rel="stylesheet" href="css/hero.css?v=23">
+  <link rel="stylesheet" href="css/style.css?v=24">
+  <link rel="stylesheet" href="css/hero.css?v=24">
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" imagesizes="(max-width:700px) 160vw, 100vw">
   <!-- Social sharing preview -->
   <meta property="og:type" content="website">
@@ -180,43 +180,49 @@
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
-<section class="services section" id="services" data-index="03">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow reveal">Services</p>
-      <h2 class="h2 reveal">What we treat, and how.</h2>
+<!-- ============ SERVICES (horizontal atlas) ============ -->
+<section class="atlas sage" id="services" data-index="03">
+  <div class="atlas__sticky">
+    <header class="atlas__head wrap">
+      <div>
+        <p class="eyebrow">Services</p>
+        <h2 class="h2">What we treat, and how.</h2>
+      </div>
+      <p class="atlas__count"><span id="atlas-i">01</span> / 07</p>
+    </header>
+    <div class="atlas__viewport">
+      <ol class="atlas__track">
+        <li class="atlas__card">
+          <figure class="atlas__media"><img src="assets/img/treat-calf.webp" width="1122" height="1402" alt="Close-up of a calf and Achilles tendon on tiptoe" loading="lazy" decoding="async"><svg class="atlas__cv" viewBox="0 0 1122 1402" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M598 760 L606 1095"/><path d="M586 760 h24 M594 1095 h24"/><path d="M606 928 L690 928 L760 860 L1060 860"/><text x="1060" y="840" text-anchor="end">ACHILLES TENDON</text></svg></figure>
+          <div class="atlas__text"><span class="atlas__n">01</span><h3>Sports physiotherapy</h3><p>From the first days after injury to a safe return to sport.</p></div>
+        </li>
+        <li class="atlas__card">
+          <figure class="atlas__media"><img src="assets/img/treat-neck-red.webp" width="1122" height="1402" alt="Neck and upper trapezius against a burgundy background" loading="lazy" decoding="async"><svg class="atlas__cv" viewBox="0 0 1122 1402" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="x"><path d="M790 772 l26 26 M816 772 l-26 26"/></g><circle cx="803" cy="785" r="30"/><circle class="dot" cx="720" cy="752" r="5"/><circle class="dot" cx="905" cy="835" r="5"/><path class="dash" d="M720 752 L905 835"/><path d="M803 755 L803 560 L1060 560"/><text x="1060" y="540" text-anchor="end">TRIGGER POINT</text></svg></figure>
+          <div class="atlas__text"><span class="atlas__n">02</span><h3>Dry needling &amp; electro-needling</h3><p>Fine needles release the knots behind muscle pain.</p></div>
+        </li>
+        <li class="atlas__card">
+          <figure class="atlas__media"><img src="assets/img/treat-neck-beige.webp" width="1122" height="1402" alt="Neck and upper trapezius against a beige background" loading="lazy" decoding="async"><svg class="atlas__cv" viewBox="0 0 1122 1402" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="x"><path d="M790 772 l26 26 M816 772 l-26 26"/></g><circle cx="803" cy="785" r="30"/><circle class="dot" cx="720" cy="752" r="5"/><circle class="dot" cx="905" cy="835" r="5"/><path class="dash" d="M720 752 L905 835"/><path d="M803 755 L803 560 L1060 560"/><text x="1060" y="540" text-anchor="end">TRIGGER POINT</text></svg></figure>
+          <div class="atlas__text"><span class="atlas__n">03</span><h3>Dry needling · beige test</h3><p>Same image on a light background, to compare.</p></div>
+        </li>
+        <li class="atlas__card">
+          <figure class="atlas__media"><img src="assets/img/treat-back-grey.webp" width="1122" height="1402" alt="Upper back and shoulder blade" loading="lazy" decoding="async"><svg class="atlas__cv" viewBox="0 0 1122 1402" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path class="dash" d="M230 1290 C 330 1080, 520 930, 760 880"/><path d="M745 868 l18 12 l-20 10"/><text x="240" y="1345">EFFLEURAGE</text></svg></figure>
+          <div class="atlas__text"><span class="atlas__n">04</span><h3>Therapeutic massage</h3><p>Releases tension and restores circulation.</p></div>
+        </li>
+        <li class="atlas__card">
+          <figure class="atlas__media"><div class="atlas__empty"><span>Image to come</span></div></figure>
+          <div class="atlas__text"><span class="atlas__n">05</span><h3>Manual therapy</h3><p>Hands-on mobilisation of joints and soft tissue.</p></div>
+        </li>
+        <li class="atlas__card">
+          <figure class="atlas__media"><div class="atlas__empty"><span>Image to come</span></div></figure>
+          <div class="atlas__text"><span class="atlas__n">06</span><h3>Pelvic floor therapy</h3><p>Discreet, respectful rehabilitation of the deep core.</p></div>
+        </li>
+        <li class="atlas__card">
+          <figure class="atlas__media"><div class="atlas__empty"><span>Image to come</span></div></figure>
+          <div class="atlas__text"><span class="atlas__n">07</span><h3>Percutaneous neuromodulation</h3><p>Ultrasound-guided stimulation of the nerve.</p></div>
+        </li>
+      </ol>
     </div>
-    <ul class="svc-list">
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">01</span><span class="svc__title">Manual therapy</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Manual mobilisation to relieve pain and improve mobility of joints and soft tissue.</p></div>
-      </li>
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">02</span><span class="svc__title">Sports physiotherapy</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Treatment and prevention of sports injuries, from the first days after injury to a safe return to training and competition.</p></div>
-      </li>
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">03</span><span class="svc__title">Pelvic floor therapy</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Strengthening and rehabilitation of the pelvic floor, in a discreet and respectful setting.</p></div>
-      </li>
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">04</span><span class="svc__title">Dry needling &amp; electro-needling</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Relief of muscle pain using fine needles, with or without electrical stimulation.</p></div>
-      </li>
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">05</span><span class="svc__title">Percutaneous neuromodulation</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Ultrasound-guided nerve stimulation used in the treatment of a range of conditions.</p></div>
-      </li>
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">06</span><span class="svc__title">Therapeutic massage</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Muscle relaxation and improved circulation, as a treatment in itself or as part of your plan.</p></div>
-      </li>
-      <li class="svc reveal">
-        <button class="svc__head" aria-expanded="false"><span class="mono">07</span><span class="svc__title">Nutrition &amp; exercise guidance</span><span class="svc__plus" aria-hidden="true"></span></button>
-        <div class="svc__body"><p>Advice on healthy habits, nutrition and physical activity that supports your recovery.</p></div>
-      </li>
-    </ul>
+    <div class="atlas__progress wrap" aria-hidden="true"><i></i></div>
   </div>
 </section>
 
@@ -382,7 +388,7 @@
 
 <div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 08 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
-<script src="js/hero.js?v=23" defer></script>
-<script src="js/main.js?v=23" defer></script>
+<script src="js/hero.js?v=24" defer></script>
+<script src="js/main.js?v=24" defer></script>
 </body>
 </html>
