@@ -101,7 +101,16 @@ p+p{margin-top:12px}
 .cross::before{left:50%;top:0;bottom:0;width:1px}.cross::after{top:50%;left:0;right:0;height:1px}
 
 /* ---------- approach ---------- */
-.approach{background:var(--base)}
+.approach{background:var(--base);overflow:hidden;isolation:isolate}
+.approach>.wrap{position:relative;z-index:1}
+/* soft top/bottom edges: the light appears out of the hero and dissolves before the next section */
+.approach::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(to bottom,var(--base) 0,rgba(104,31,12,0) 30%,rgba(104,31,12,0) 72%,var(--base) 100%)}
+.approach .step p{color:rgba(243,236,226,.82)}
+/* same light as the hero halo; position + opacity come from js/main.js */
+.approach__light{position:absolute;z-index:0;left:0;top:0;width:var(--ls,1000px);aspect-ratio:1/1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,#ffd276 0%,#ffb449 23%,#f98d25 43%,rgba(231,90,19,.85) 62%,rgba(169,55,17,.3) 82%,rgba(169,55,17,0) 100%);
+  filter:blur(clamp(15px,3vw,48px));transform:translate3d(var(--lx,40vw),var(--ly,-300px),0);opacity:var(--lo,0);will-change:transform,opacity}
 .steps{border-top:1px solid var(--cream-25)}
 .step{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:28px 0;border-bottom:1px solid var(--cream-25)}
 .step__n{color:var(--cream-60);padding-top:3px}
@@ -130,6 +139,7 @@ p+p{margin-top:12px}
 .band__img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;transform:translateY(calc(var(--p,0)*-60px))}
 .band::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(104,31,12,.6),transparent 55%)}
 .band__hud{position:absolute;z-index:2;left:var(--pad);top:22%;display:flex;align-items:center;gap:20px;width:min(560px,80vw)}
+.hud-label{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .band__line{flex:1;height:1px;background:var(--cream-60);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
 .band.in .band__line{transform:scaleX(1)}
 .target{position:relative;width:66px;height:58px;flex:none}
