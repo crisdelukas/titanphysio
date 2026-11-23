@@ -133,6 +133,48 @@ p+p{margin-top:12px}
 .svc.is-open .svc__body{grid-template-rows:1fr}
 .svc.is-open .svc__body>p{padding-bottom:30px}
 
+/* ---------- services: horizontal atlas (sticky; vertical scroll moves the row sideways) ---------- */
+.atlas{position:relative}
+.atlas__sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,4vh,48px);padding-top:96px}
+.atlas__head{display:flex;justify-content:space-between;align-items:flex-end;width:100%}
+.atlas .h2{font-size:clamp(30px,3.4vw,52px);max-width:none}
+.sage .eyebrow{color:var(--base)}
+.atlas__count{white-space:nowrap;font-family:Arial,Helvetica,sans-serif;font-size:15px;letter-spacing:.02em;color:rgba(104,31,12,.7)}
+.atlas__viewport{width:100%}
+.atlas__track{display:flex;gap:clamp(28px,4vw,72px);padding:0 var(--pad) 0 max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));width:max-content;
+  transform:translate3d(var(--ax,0px),0,0);will-change:transform}
+.atlas__card{width:clamp(240px,min(26vw,42vh),420px);flex:none}
+.atlas__media{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;background:rgba(104,31,12,.08)}
+.atlas__media img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1.08 - var(--f,0)*.08));transition:transform .2s linear}
+.atlas__cv{position:absolute;inset:0;width:100%;height:100%;opacity:var(--f,0);transition:opacity .25s linear}
+.atlas__cv path,.atlas__cv circle{fill:none;stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke}
+.atlas__cv .dot{fill:#fff;stroke:none}
+.atlas__cv .dash{stroke-dasharray:4 5}
+.atlas__cv text{fill:#fff;font-family:var(--mono);font-size:30px;letter-spacing:3px}
+.atlas__empty{position:absolute;inset:0;display:grid;place-items:center;border:1px solid var(--line)}
+.atlas__empty span{font-size:13px;color:rgba(104,31,12,.6)}
+.atlas__text{display:grid;grid-template-columns:34px 1fr;column-gap:10px;padding-top:18px}
+.atlas__n{grid-row:1/3;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:rgba(104,31,12,.6);padding-top:6px}
+.atlas__text h3{font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:clamp(19px,1.5vw,24px);letter-spacing:-.03em;margin:0 0 6px}
+.atlas__text p{font-size:14.5px;line-height:1.45;color:rgba(104,31,12,.78);max-width:30ch}
+.atlas__progress{width:100%;height:1px;position:relative}
+.atlas__progress::before{content:"";position:absolute;left:var(--pad);right:calc(var(--pad) + 200px);top:0;height:1px;background:var(--line)}
+.atlas__progress i{position:absolute;left:var(--pad);top:0;height:1px;background:var(--base);width:calc((100% - 2*var(--pad) - 200px)*var(--ap,0))}
+@media (max-width:700px){
+  .atlas__sticky{position:relative;height:auto;padding:110px 0 70px}
+  .atlas__viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .atlas__viewport::-webkit-scrollbar{display:none}
+  .atlas__track{transform:none}
+  .atlas__card{width:78vw;scroll-snap-align:center}
+  .atlas__progress{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .atlas__sticky{position:relative;height:auto;padding:110px 0}
+  .atlas__viewport{overflow-x:auto}
+  .atlas__track{transform:none!important}
+  .atlas__cv{opacity:1}
+}
+
 /* ---------- band ---------- */
 /* height follows the panoramic photo (3:1) so the whole thigh stays in frame */
 .band{position:relative;height:clamp(300px,34vw,720px);overflow:hidden;background:var(--base)}
