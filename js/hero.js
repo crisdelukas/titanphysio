@@ -38,7 +38,18 @@
   const headline = hero.querySelector('.hero__headline');
   const items = hero.querySelectorAll('.hero__item');
 
-  let pending = false, lastP = -1, lastW = 0, lastH = 0;
+
+  /* One light for hero + "Our approach": once the hero is released, its light stays fixed on screen and
+     eases from where it ended up to mid-screen — "Our approach" uses the same function, so both halves match. */
+  const LIGHT_SCREEN_Y = .58, LIGHT_EASE_PX = 650;
+  window.titanLightCenterY = (post, h, endY) => {
+    const t = Math.min(1, Math.max(0, post / LIGHT_EASE_PX)), e = t * t * (3 - 2 * t);
+    return endY + (h * LIGHT_SCREEN_Y - endY) * e;              // screen y of the light centre
+  };
+  const LIGHT_DIM = .38;                                          // how much the shared light softens once it has settled
+  window.titanLightOpacity = post => { const t = Math.min(1, Math.max(0, post / LIGHT_EASE_PX)); return 1 - LIGHT_DIM * t * t * (3 - 2 * t); };
+
+  let pending = false, lastP = -1, lastPost = -1, lastW = 0, lastH = 0;
 
   function update() {
     pending = false;
@@ -49,12 +60,18 @@
     const range = extra > 1 ? extra : stage.offsetHeight;
     const p = clamp(-rect.top / Math.max(1, range));
     const w = innerWidth, h = hero.clientHeight;
-    if (p === lastP && w === lastW && h === lastH) return; // nothing changed
-    lastP = p; lastW = w; lastH = h;
+    const sticky = extra > 1;
+    const post = sticky ? Math.max(0, -rect.top - extra) : 0;   // px scrolled after the hero was released
+    if (p === lastP && post === lastPost && w === lastW && h === lastH) return; // nothing changed
+    lastP = p; lastPost = post; lastW = w; lastH = h;
     const C = CONFIG;
 
     set('--hx', `${bezier(C.haloX, p) * w}px`);
-    set('--hy', `${bezier(C.haloY, p) * h}px`);
+    if (post > 0) {
+      const W = Math.min(.79 * w, 1150), endY = C.haloY[3] * h + W / 2;   // light centre at the end of the hero
+      set('--hy', `${(window.titanLightCenterY(post, h, endY) + post - W / 2).toFixed(1)}px`);
+      set('--ho', window.titanLightOpacity(post).toFixed(3));
+    } else { set('--hy', `${bezier(C.haloY, p) * h}px`); set('--ho', 1); }
     set('--hs', (1 + C.haloScale * p).toFixed(4));
 
     set('--bx', `${C.bodyX * p}px`);
