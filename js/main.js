@@ -65,15 +65,24 @@
   let ticking = false;
   /* "Our approach": the hero light continues and travels down the section with the scroll */
   const approach = $('#approach'), apLight = $('.approach__light');
-  const LIGHT = { screenY: .58, maxOpacity: .6, fadeIn: .3, fadeOut: .3 }; // fractions of the screen / section
+  const LIGHT = { screenY: .58, maxOpacity: 1, fadeOut: .3 }; // fractions of the screen / section
   const moveLight = () => {
     if (!approach || !apLight) return;
     const w = innerWidth, r = approach.getBoundingClientRect();
     const W = w <= 700 ? 1.25 * w : Math.min(.79 * w, 1150);   // hero halo size
     const size = W * 1.11, cx = .43 * w + W / 2;                 // where the hero light ends
-    const cy = reduce ? r.height * .4 : Math.max(0, Math.min(r.height, innerHeight * LIGHT.screenY - r.top));
+    // same light as the hero: while the hero leaves, both use window.titanLightCenterY, so they line up exactly
+    const stageEl = $('.hero-stage');
+    const sticky = stageEl && stageEl.offsetHeight > innerHeight + 1 && window.titanLightCenterY;
+    let screenY;
+    if (sticky) {
+      const post = Math.max(0, innerHeight - stageEl.getBoundingClientRect().bottom);
+      screenY = window.titanLightCenterY(post, innerHeight, .45 * innerHeight + W / 2);
+      LIGHT.maxOpacity = window.titanLightOpacity(post);
+    } else { screenY = innerHeight * LIGHT.screenY; LIGHT.maxOpacity = .62; }
+    const cy = reduce ? r.height * .4 : Math.max(0, Math.min(r.height, screenY - r.top));
     const t = cy / r.height;
-    const o = LIGHT.maxOpacity * Math.min(1, t / LIGHT.fadeIn, (1 - t) / LIGHT.fadeOut);
+    const o = LIGHT.maxOpacity * Math.min(1, (1 - t) / LIGHT.fadeOut); // full from the start (continuity), dissolves at the bottom
     approach.style.setProperty('--ls', size + 'px');
     approach.style.setProperty('--lx', (cx - size / 2).toFixed(1) + 'px');
     approach.style.setProperty('--ly', (cy - size / 2).toFixed(1) + 'px');
