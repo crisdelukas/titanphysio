@@ -63,9 +63,27 @@
   /* Scroll-linked parallax for the image band (hero motion lives in js/hero.js) */
   const parallax = $$('.parallax');
   let ticking = false;
+  /* "Our approach": the hero light continues and travels down the section with the scroll */
+  const approach = $('#approach'), apLight = $('.approach__light');
+  const LIGHT = { screenY: .58, maxOpacity: .6, fadeIn: .3, fadeOut: .3 }; // fractions of the screen / section
+  const moveLight = () => {
+    if (!approach || !apLight) return;
+    const w = innerWidth, r = approach.getBoundingClientRect();
+    const W = w <= 700 ? 1.25 * w : Math.min(.79 * w, 1150);   // hero halo size
+    const size = W * 1.11, cx = .43 * w + W / 2;                 // where the hero light ends
+    const cy = reduce ? r.height * .4 : Math.max(0, Math.min(r.height, innerHeight * LIGHT.screenY - r.top));
+    const t = cy / r.height;
+    const o = LIGHT.maxOpacity * Math.min(1, t / LIGHT.fadeIn, (1 - t) / LIGHT.fadeOut);
+    approach.style.setProperty('--ls', size + 'px');
+    approach.style.setProperty('--lx', (cx - size / 2).toFixed(1) + 'px');
+    approach.style.setProperty('--ly', (cy - size / 2).toFixed(1) + 'px');
+    approach.style.setProperty('--lo', Math.max(0, o).toFixed(3));
+  };
+
   const frame = () => {
     ticking = false;
     onScrollHeader();
+    moveLight();
     const max = document.documentElement.scrollHeight - innerHeight;
     counterBar.style.setProperty('--prog', max > 0 ? scrollY / max : 0);
     if (reduce) return;
