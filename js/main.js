@@ -89,10 +89,45 @@
     approach.style.setProperty('--lo', Math.max(0, o).toFixed(3));
   };
 
+
+  /* Services atlas: the section is as tall as the row is wide; vertical scroll moves the row sideways.
+     Each card "comes into focus" (annotation appears, image settles) as it reaches the left third. */
+  const atlas = $('.atlas'), track = $('.atlas__track'), atlasI = $('#atlas-i');
+  const cards = $$('.atlas__card');
+  const sizeAtlas = () => {
+    if (!atlas) return;
+    const sticky = innerWidth > 700 && !reduce;
+    atlas.style.height = sticky ? (innerHeight + Math.max(0, track.scrollWidth - innerWidth)) + 'px' : '';
+  };
+  const moveAtlas = () => {
+    if (!atlas) return;
+    const sticky = innerWidth > 700 && !reduce;
+    const dist = Math.max(0, track.scrollWidth - innerWidth);
+    const r = atlas.getBoundingClientRect();
+    const p = sticky ? Math.max(0, Math.min(1, -r.top / Math.max(1, atlas.offsetHeight - innerHeight))) : 0;
+    if (sticky) track.style.setProperty('--ax', (-p * dist).toFixed(1) + 'px');
+    atlas.style.setProperty('--ap', p.toFixed(4));
+    let best = 0, bestD = 1e9;
+    cards.forEach((c, i) => {
+      const b = c.getBoundingClientRect(), cx = b.left + b.width / 2;
+      const target = sticky ? innerWidth * .32 : innerWidth / 2;
+      const d = Math.abs(cx - target);
+      if (d < bestD) { bestD = d; best = i; }
+      const f = Math.max(0, 1 - d / (b.width * 1.1));
+      c.style.setProperty('--f', (f * f * (3 - 2 * f)).toFixed(3));
+    });
+    if (atlasI) atlasI.textContent = String(best + 1).padStart(2, '0');
+  };
+  if (atlas) $('.atlas__viewport').addEventListener('scroll', moveAtlas, { passive: true });
+  addEventListener('resize', sizeAtlas);
+  addEventListener('load', () => { sizeAtlas(); moveAtlas(); });
+  sizeAtlas();
+
   const frame = () => {
     ticking = false;
     onScrollHeader();
     moveLight();
+    moveAtlas();
     const max = document.documentElement.scrollHeight - innerHeight;
     counterBar.style.setProperty('--prog', max > 0 ? scrollY / max : 0);
     if (reduce) return;
