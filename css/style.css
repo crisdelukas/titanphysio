@@ -105,8 +105,8 @@ p+p{margin-top:12px}
 .approach>.wrap{position:relative;z-index:1}
 /* soft top/bottom edges: the light appears out of the hero and dissolves before the next section */
 .approach::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(to bottom,var(--base) 0,rgba(104,31,12,0) 30%,rgba(104,31,12,0) 72%,var(--base) 100%)}
-.approach .step p{color:rgba(243,236,226,.82)}
+  background:linear-gradient(to bottom,rgba(104,31,12,0) 72%,var(--base) 100%)}
+.approach .step p{color:rgba(243,236,226,.9)}
 /* same light as the hero halo; position + opacity come from js/main.js */
 .approach__light{position:absolute;z-index:0;left:0;top:0;width:var(--ls,1000px);aspect-ratio:1/1;border-radius:50%;pointer-events:none;
   background:radial-gradient(circle at 50% 50%,#ffd276 0%,#ffb449 23%,#f98d25 43%,rgba(231,90,19,.85) 62%,rgba(169,55,17,.3) 82%,rgba(169,55,17,0) 100%);
@@ -199,6 +199,19 @@ p+p{margin-top:12px}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) sepia(.35) contrast(.95)}
 .practice__links{display:flex;gap:28px;flex-wrap:wrap;margin-top:32px}
 
+/* ---------- sage sections (Costs, footer): #96A399 with a subtle paper texture, text in the base brown ---------- */
+.sage{--line:rgba(104,31,12,.28);background-color:#96a399;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25  0 0 0 0 .3  0 0 0 0 .26  0 0 0 -.9 .62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color:var(--base)}
+.sage .eyebrow::after{background:rgba(104,31,12,.55)}
+.sage .muted,.sage .card p,.sage .sources{color:rgba(104,31,12,.78)}
+.sage .card__k{color:rgba(104,31,12,.7)}
+.sage .cards-3{background:none;border:1px solid var(--line);gap:0}
+.sage .card{background:transparent;border-right:1px solid var(--line)}
+.sage .card:last-child{border-right:0}
+.sage .todo{outline-color:rgba(104,31,12,.55)}
+.site-footer.sage{border-top:0}
+.sage .footer__links a:hover{color:var(--base);text-decoration:underline;text-underline-offset:4px}
+.sage ::selection{background:var(--base);color:#96a399}
+
 /* ---------- faq ---------- */
 .faq__list{border-top:1px solid var(--cream-25)}
 details{border-bottom:1px solid var(--cream-25)}
@@ -270,6 +283,8 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
             mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 18%,#000 80%,transparent 100%)}
   .about__side--right{max-width:560px;padding-bottom:0;margin-top:-6vw}
   .card{min-height:0}
+  .sage .card{border-right:0;border-bottom:1px solid var(--line)}
+  .sage .card:last-child{border-bottom:0}
   .footer__grid{grid-template-columns:1fr 1fr}
   .footer__brand{grid-column:1/-1}
 }
