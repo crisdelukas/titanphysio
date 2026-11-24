@@ -229,7 +229,7 @@ p+p{margin-top:12px}
 
 /* ---------- the practice (gallery) ---------- */
 /* ---------- the practice: editorial, near full-bleed, on the beige of the treatment photos ---------- */
-.px{--px-line:rgba(104,31,12,.28);background-color:#e0d8cc;color:var(--base);padding:clamp(70px,8vw,110px) 0 clamp(80px,9vw,120px);
+.px{--px-line:rgba(104,31,12,.28);background-color:#a4b8ad;color:var(--base);padding:clamp(70px,8vw,110px) 0 clamp(80px,9vw,120px);
   background-image:radial-gradient(ellipse 70% 60% at 70% 0%,rgba(255,255,255,.32),transparent 70%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42  0 0 0 0 .3  0 0 0 0 .22  0 0 0 -.9 .42'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .px__k{font-family:var(--sans);font-size:11.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;line-height:1.6;margin:0}
 .px__soft{color:rgba(104,31,12,.55)}
@@ -254,9 +254,9 @@ p+p{margin-top:12px}
 .px .map iframe{filter:grayscale(1) contrast(.92) brightness(1.04);mix-blend-mode:multiply}
 .px .map{background:transparent;border:1px solid var(--px-line);margin-top:clamp(90px,10vw,140px)}
 .px .btn--line{border-color:var(--base);color:var(--base)}
-.px .btn--line:hover{background:var(--base);color:#e0d8cc}
+.px .btn--line:hover{background:var(--base);color:#a4b8ad}
 .px .map__note{color:rgba(104,31,12,.65)}
-.px ::selection{background:var(--base);color:#e0d8cc}
+.px ::selection{background:var(--base);color:#a4b8ad}
 /* full-size viewer */
 .lightbox{margin:auto;border:0;padding:0;background:transparent;max-width:min(92vw,1600px);max-height:92vh;overflow:visible}
 .lightbox::backdrop{background:rgba(104,31,12,.92)}
