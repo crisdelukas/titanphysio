@@ -228,12 +228,31 @@ p+p{margin-top:12px}
 
 
 /* ---------- the practice (gallery) ---------- */
-/* justified rows: every photo keeps its own proportions (flex-grow = width / height, set inline) */
-.gallery{display:flex;flex-direction:column;gap:1px;background:var(--cream-25);border:1px solid var(--cream-25)}
-.gallery__row{display:flex;gap:1px}
-.gallery__item{flex-basis:0;margin:0;overflow:hidden;background:var(--base)}
-.gallery__item img{width:100%;height:auto;transition:transform 1.2s var(--ease)}
-.gallery__item:hover img{transform:scale(1.04)}
+/* ---------- the practice: architectural editorial gallery ---------- */
+.pg__primary{display:grid;grid-template-columns:3fr 2fr;gap:clamp(20px,2.6vw,40px);align-items:end}
+.pg__item{margin:0}
+.pg__open{display:block;overflow:hidden;cursor:zoom-in}
+.pg__item img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform 1.4s var(--ease)}
+.pg__open:hover img{transform:scale(1.025)}
+.pg__item figcaption{display:flex;gap:14px;padding-top:12px;font-size:13.5px;color:rgba(104,31,12,.78)}
+.pg__item figcaption span{color:rgba(104,31,12,.5)}
+.pg__divider{display:flex;align-items:center;gap:18px;margin:clamp(56px,7vw,104px) 0 clamp(24px,3vw,36px);font-size:13.5px;color:rgba(104,31,12,.6)}
+.pg__divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.pg__secondary{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+/* full-size viewer */
+.lightbox{margin:auto;border:0;padding:0;background:transparent;max-width:min(92vw,1600px);max-height:92vh;overflow:visible}
+.lightbox::backdrop{background:rgba(104,31,12,.92)}
+.lightbox img{display:block;max-width:min(92vw,1600px);max-height:84vh;width:auto;height:auto}
+.lightbox__cap{color:var(--cream);font-size:13.5px;padding-top:12px}
+.lightbox__close{position:fixed;top:22px;right:28px;color:var(--cream);font-size:34px;font-weight:200;line-height:1}
+/* sage versions of shared elements in this section */
+.sage .map{background:transparent;border-color:var(--line)}
+.sage .btn--line{border-color:var(--base);color:var(--base)}
+.sage .btn--line:hover{background:var(--base);color:#a4b8ad}
+.sage .link-mono{border-color:var(--line)}
+.sage .link-mono:hover{border-color:var(--base)}
+.sage .map__note{color:rgba(104,31,12,.65)}
+.sage .map{margin-top:clamp(56px,7vw,104px);border-top:1px solid var(--line)}
 /* ---------- map (click-to-load Google Maps, toned to the palette) ---------- */
 .map{position:relative;margin-top:1px;aspect-ratio:16/7;border:1px solid var(--cream-25);border-top:0;background:var(--base);overflow:hidden}
 .map__placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:24px}
@@ -316,6 +335,7 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
   .grid-2{grid-template-columns:1fr}
   .sticky-col{position:static}
   .cards-3{grid-template-columns:1fr}
+  .pg__secondary{grid-template-columns:1fr 1fr}
   .about{background:linear-gradient(to bottom,var(--base) 0%,#86331e 18%,#7d2f1c 55%,var(--base) 100%)}
   .about::after{background:radial-gradient(ellipse 90% 60% at 50% 35%,transparent 45%,rgba(104,31,12,.6) 100%)}
   .about__stage{grid-template-columns:1fr;padding-bottom:clamp(80px,12vw,120px);gap:0}
@@ -336,8 +356,8 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
   .svc__head{grid-template-columns:44px 1fr 22px}
   .svc__body>p{padding-left:60px}
   .form,.info{grid-template-columns:1fr}
-  .gallery__row{flex-direction:column}
-  .gallery__item{flex:none!important}
+  .pg__primary{grid-template-columns:1fr}
+  .pg__item--side{width:72%;justify-self:end}
   .map{aspect-ratio:4/5}
   .counter{display:none}
 }
