@@ -15,8 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=26">
-  <link rel="stylesheet" href="css/hero.css?v=26">
+  <link rel="stylesheet" href="css/style.css?v=27">
+  <link rel="stylesheet" href="css/hero.css?v=27">
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" imagesizes="(max-width:700px) 160vw, 100vw">
   <!-- Social sharing preview -->
   <meta property="og:type" content="website">
@@ -299,24 +299,36 @@
 </section>
 
 <!-- ============ THE PRACTICE ============ -->
-<section class="practice section sage" id="practice" data-index="07">
-  <div class="wrap">
-    <div class="section-head">
+<section class="practice sage" id="practice" data-index="07">
+  <!-- Row A: text left, treatment room bleeding off the right edge -->
+  <div class="pg__row pg__row--a">
+    <div class="pg__text">
       <p class="eyebrow reveal">The practice</p>
       <h2 class="h2 reveal">Allschwilerstrasse 14, Basel.</h2>
+      <p class="pg__lead reveal">A calm treatment room for hands-on work, and an open training area to rebuild strength and movement.</p>
+      <p class="pg__cap reveal"><span>01</span>Treatment room</p>
     </div>
-    <div class="pg">
-      <div class="pg__primary">
-        <figure class="pg__item pg__item--main reveal"><a href="assets/img/practice-room.webp" class="pg__open" aria-label="Open image: Treatment room"><img src="assets/img/practice-room.webp" width="1448" height="1086" alt="Treatment room with adjustable therapy table and curtains" loading="lazy" decoding="async"></a><figcaption><span>01</span>Treatment room</figcaption></figure>
-        <figure class="pg__item pg__item--side reveal"><a href="assets/img/practice-training.webp" class="pg__open" aria-label="Open image: Training area"><img src="assets/img/practice-training.webp" width="1448" height="1086" alt="Open training area with racks, sling trainer and movement-analysis mat" loading="lazy" decoding="async"></a><figcaption><span>02</span>Training area</figcaption></figure>
-      </div>
-      <div class="pg__divider reveal"><span>Equipment</span></div>
-      <div class="pg__secondary">
-        <figure class="pg__item pg__item--eq reveal"><a href="assets/img/practice-leg-extension.webp" class="pg__open" aria-label="Open image: Leg extension"><img src="assets/img/practice-leg-extension.webp" width="1448" height="1086" alt="Technogym leg extension machine by the window" loading="lazy" decoding="async"></a><figcaption><span>03</span>Leg extension</figcaption></figure>
-        <figure class="pg__item pg__item--eq reveal"><a href="assets/img/practice-leg-press.webp" class="pg__open" aria-label="Open image: Leg press"><img src="assets/img/practice-leg-press.webp" width="1448" height="1086" alt="Leg press and dumbbell rack" loading="lazy" decoding="async"></a><figcaption><span>04</span>Leg press</figcaption></figure>
-        <figure class="pg__item pg__item--eq reveal"><a href="assets/img/practice-treadmill.webp" class="pg__open" aria-label="Open image: Gait treadmill"><img src="assets/img/practice-treadmill.webp" width="1448" height="1086" alt="Gait-training treadmill with handrails" loading="lazy" decoding="async"></a><figcaption><span>05</span>Gait treadmill</figcaption></figure>
-        <figure class="pg__item pg__item--eq reveal"><a href="assets/img/practice-bikes.webp" class="pg__open" aria-label="Open image: Cardio"><img src="assets/img/practice-bikes.webp" width="1448" height="1086" alt="Upright and recumbent exercise bikes" loading="lazy" decoding="async"></a><figcaption><span>06</span>Cardio</figcaption></figure>
-      </div>
+    <figure class="pg__frame">
+      <a class="pg__open" href="assets/img/practice-room.webp" aria-label="Open image: Treatment room"><span class="pg__media"><img class="pg__img" src="assets/img/practice-room.webp" width="1448" height="1086" alt="Treatment room with adjustable therapy table and curtains" loading="lazy" decoding="async"><svg class="pg__cv" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect x="878" y="662" width="336" height="236"/><circle class="dot" cx="878" cy="662" r="4"/><path d="M878 662 L838 622 L600 622"/><text x="604" y="606">TREATMENT TABLE</text></svg></span></a>
+    </figure>
+  </div>
+  <!-- Row B: training area bleeding off the left edge, text right (mirrored) -->
+  <div class="pg__row pg__row--b">
+    <figure class="pg__frame">
+      <a class="pg__open" href="assets/img/practice-training.webp" aria-label="Open image: Training area"><span class="pg__media"><img class="pg__img" src="assets/img/practice-training.webp" width="1448" height="1086" alt="Open training area with racks, sling trainer and movement-analysis mat" loading="lazy" decoding="async"><svg class="pg__cv" viewBox="0 0 1448 1086" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect x="395" y="190" width="350" height="400"/><circle class="dot" cx="395" cy="590" r="4"/><path d="M395 590 L395 640 L640 640"/><text x="404" y="628">STRENGTH AREA</text><path class="dash" d="M355 735 L790 650 L1330 945 L900 1086"/><circle class="dot" cx="430" cy="960" r="4"/><path d="M430 960 L380 1010 L150 1010"/><text x="154" y="996">MOVEMENT FLOOR</text></svg></span></a>
+    </figure>
+    <div class="pg__text">
+      <p class="pg__cap reveal"><span>02</span>Training area</p>
+      <p class="pg__lead reveal">Where treatment continues into movement.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="pg__divider reveal"><span>Equipment</span></div>
+    <div class="pg__sheet">
+      <figure class="pg__eq reveal"><a class="pg__open" href="assets/img/practice-leg-extension.webp" aria-label="Open image: Leg extension"><img src="assets/img/practice-leg-extension.webp" width="1448" height="1086" alt="Technogym leg extension machine by the window" loading="lazy" decoding="async"></a><figcaption><span>03</span>Leg extension</figcaption></figure>
+      <figure class="pg__eq reveal"><a class="pg__open" href="assets/img/practice-leg-press.webp" aria-label="Open image: Leg press"><img src="assets/img/practice-leg-press.webp" width="1448" height="1086" alt="Leg press and dumbbell rack" loading="lazy" decoding="async"></a><figcaption><span>04</span>Leg press</figcaption></figure>
+      <figure class="pg__eq reveal"><a class="pg__open" href="assets/img/practice-treadmill.webp" aria-label="Open image: Gait treadmill"><img src="assets/img/practice-treadmill.webp" width="1448" height="1086" alt="Gait-training treadmill with handrails" loading="lazy" decoding="async"></a><figcaption><span>05</span>Gait treadmill</figcaption></figure>
+      <figure class="pg__eq reveal"><a class="pg__open" href="assets/img/practice-bikes.webp" aria-label="Open image: Cardio"><img src="assets/img/practice-bikes.webp" width="1448" height="1086" alt="Upright and recumbent exercise bikes" loading="lazy" decoding="async"></a><figcaption><span>06</span>Cardio</figcaption></figure>
     </div>
     <dialog class="lightbox" aria-label="Image"><button class="lightbox__close" type="button" aria-label="Close">×</button><img alt=""><p class="lightbox__cap"></p></dialog>
     <!-- Map: loads Google Maps only after a click (privacy: no Google cookies until the visitor asks for the map) -->
@@ -390,7 +402,7 @@
 
 <div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 08 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
-<script src="js/hero.js?v=26" defer></script>
-<script src="js/main.js?v=26" defer></script>
+<script src="js/hero.js?v=27" defer></script>
+<script src="js/main.js?v=27" defer></script>
 </body>
 </html>
