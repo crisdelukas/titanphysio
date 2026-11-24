@@ -135,7 +135,7 @@ p+p{margin-top:12px}
 
 /* ---------- services: horizontal atlas (sticky; vertical scroll moves the row sideways) ---------- */
 .atlas{position:relative}
-.atlas__sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,4vh,48px);padding-top:96px}
+.atlas__sticky{position:sticky;top:0;height:100svh;overflow:hidden;overflow:clip;display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,4vh,48px);padding-top:96px}
 .atlas__head{display:flex;justify-content:space-between;align-items:flex-end;width:100%}
 .atlas .h2{font-size:clamp(30px,3.4vw,52px);max-width:none}
 .sage .eyebrow{color:var(--base)}
@@ -147,7 +147,8 @@ p+p{margin-top:12px}
 .atlas__media{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;background:rgba(104,31,12,.08)}
 .atlas__media img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1.08 - var(--f,0)*.08));transition:transform .2s linear}
 .atlas__cv{position:absolute;inset:0;width:100%;height:100%;opacity:var(--f,0);transition:opacity .25s linear}
-.atlas__cv path,.atlas__cv circle{fill:none;stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke}
+.atlas__divider{flex:none;align-self:center;writing-mode:vertical-rl;transform:rotate(180deg);font-size:13px;color:rgba(104,31,12,.6);border-left:1px solid var(--line);padding-left:14px;height:40vh;text-align:center}
+.atlas__cv path,.atlas__cv circle,.atlas__cv rect,.atlas__cv ellipse{fill:none;stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke}
 .atlas__cv .dot{fill:#fff;stroke:none}
 .atlas__cv .dash{stroke-dasharray:4 5}
 .atlas__cv text{fill:#fff;font-family:var(--mono);font-size:30px;letter-spacing:3px}
