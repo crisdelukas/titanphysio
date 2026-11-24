@@ -15,8 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=33">
-  <link rel="stylesheet" href="css/hero.css?v=33">
+  <link rel="stylesheet" href="css/style.css?v=35">
+  <link rel="stylesheet" href="css/hero.css?v=35">
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-body-1280.webp 1280w, assets/img/hero-body.webp 3840w" imagesizes="(max-width:700px) 160vw, 100vw">
   <!-- Social sharing preview -->
   <meta property="og:type" content="website">
@@ -358,6 +358,8 @@
           <option>First appointment</option><option>Follow-up</option><option>Question about a treatment</option><option>Other</option>
         </select>
       </label>
+      <fieldset class="full choice"><legend>Which days suit you? <span>Choose one or more</span></legend><div class="chips"><label class="chip"><input type="checkbox" name="days[]" value="Monday"><span>Monday</span></label><label class="chip"><input type="checkbox" name="days[]" value="Tuesday"><span>Tuesday</span></label><label class="chip"><input type="checkbox" name="days[]" value="Wednesday"><span>Wednesday</span></label><label class="chip"><input type="checkbox" name="days[]" value="Thursday"><span>Thursday</span></label><label class="chip"><input type="checkbox" name="days[]" value="Friday"><span>Friday</span></label></div></fieldset>
+      <fieldset class="full choice"><legend>Preferred time <span>Choose one or more</span></legend><div class="chips"><label class="chip"><input type="checkbox" name="times[]" value="08:00 – 12:00"><span>08:00 – 12:00</span></label><label class="chip"><input type="checkbox" name="times[]" value="12:00 – 16:00"><span>12:00 – 16:00</span></label><label class="chip"><input type="checkbox" name="times[]" value="16:00 – 20:00"><span>16:00 – 20:00</span></label></div></fieldset>
       <label class="full">Message *<textarea name="message" rows="5" required placeholder="Please don't include detailed medical information here."></textarea></label>
       <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
       <label class="check full"><input type="checkbox" required><span>I agree that my data is used to answer my enquiry (<a href="#">privacy policy</a>).</span></label>
@@ -389,7 +391,7 @@
 
 <div class="counter mono" aria-hidden="true"><span id="counter-n">01</span> / 08 <span class="counter__bar"><i id="counter-bar"></i></span></div>
 
-<script src="js/hero.js?v=33" defer></script>
-<script src="js/main.js?v=33" defer></script>
+<script src="js/hero.js?v=35" defer></script>
+<script src="js/main.js?v=35" defer></script>
 </body>
 </html>
