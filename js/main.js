@@ -4,6 +4,21 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Practice: reveal each large frame like a curtain, then let the photo drift slowly inside it */
+  const frames = $$('.pg__frame');
+  // observe the row (a fully clipped element can report no intersection), then open its frame
+  const frameIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.querySelector('.pg__frame').classList.add('in'); frameIO.unobserve(e.target); } }), { threshold: .2 });
+  $$('.pg__row').forEach(r => frameIO.observe(r));
+  function driftFrames() {
+    if (reduce) return;
+    frames.forEach(f => {
+      const r = f.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > innerHeight + 100) return;
+      f.style.setProperty('--pp', ((r.top + r.height / 2) / innerHeight - .5).toFixed(3));
+    });
+  }
+
+
   /* Header stays transparent over the hero scene, turns solid afterwards.
      The section counter is hidden while the hero's own scroll meter is visible. */
   const header = $('#header');
@@ -128,6 +143,7 @@
     onScrollHeader();
     moveLight();
     moveAtlas();
+    driftFrames();
     const max = document.documentElement.scrollHeight - innerHeight;
     counterBar.style.setProperty('--prog', max > 0 ? scrollY / max : 0);
     if (reduce) return;
@@ -150,13 +166,14 @@
     map.appendChild(f); $('.map__placeholder', map).remove();
   });
 
+  /* Practice: reveal each large frame like a curtain, then let the photo drift slowly inside it */
   /* Practice gallery: open each image full size */
   const lb = $('.lightbox');
   if (lb) {
     $$('.pg__open').forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
       $('img', lb).src = a.getAttribute('href'); $('img', lb).alt = $('img', a).alt;
-      $('.lightbox__cap', lb).textContent = a.closest('figure').querySelector('figcaption').textContent.replace(/^\d+/, m => m + '  ');
+      $('.lightbox__cap', lb).textContent = (a.closest('figure').querySelector('figcaption') || a.closest('.pg__row').querySelector('.pg__cap')).textContent.replace(/^\d+/, m => m + '  ');
       lb.showModal();
     }));
     $('.lightbox__close', lb).addEventListener('click', () => lb.close());
