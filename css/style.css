@@ -236,10 +236,12 @@ p+p{margin-top:12px}
 .px__big,.px__wide,.px__under,.px__label,.px__tri{margin-left:clamp(12px,1.4vw,22px);margin-right:clamp(12px,1.4vw,22px)}
 .px figure{margin-top:0;margin-bottom:0}
 .px__big .pg__open,.px__wide .pg__open{display:block;overflow:hidden}
-.px__big img{width:100%;height:min(72vh,760px);object-fit:cover;object-position:50% 62%;display:block;transition:transform 1.6s var(--ease)}
-.px__wide img{width:100%;height:min(56vh,560px);object-fit:cover;object-position:50% 58%;display:block;transition:transform 1.6s var(--ease)}
+.px__big img{width:100%;height:min(78vh,820px);object-fit:cover;object-position:50% 85%;display:block;transition:transform 1.6s var(--ease)}
+.px__wide img{width:100%;height:auto;aspect-ratio:4/3;max-height:120vh;object-fit:cover;object-position:50% 60%;display:block;transition:transform 1.6s var(--ease)}
 .px .pg__open:hover img{transform:scale(1.02)}
 .px__under{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-top:14px}
+.px__top{margin:0 clamp(12px,1.4vw,22px) 14px}
+.px__under--right{justify-content:flex-end}
 .px__right{width:min(460px,40vw)}
 .px__right p{font-size:14px;line-height:1.55;color:rgba(104,31,12,.85)}
 .px__more{display:flex;justify-content:space-between;border-top:1px solid var(--px-line);margin-top:16px;padding-top:9px}
@@ -249,6 +251,7 @@ p+p{margin-top:12px}
 .px__eq .pg__open{display:block;overflow:hidden}
 .px__eq img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform 1.6s var(--ease)}
 .px figcaption{display:flex;justify-content:space-between;gap:16px;padding-top:10px}
+.px .map iframe{filter:grayscale(1) contrast(.92) brightness(1.04);mix-blend-mode:multiply}
 .px .map{background:transparent;border:1px solid var(--px-line);margin-top:clamp(90px,10vw,140px)}
 .px .btn--line{border-color:var(--base);color:var(--base)}
 .px .btn--line:hover{background:var(--base);color:#e0d8cc}
@@ -376,8 +379,8 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
   .px__eq img{aspect-ratio:3/4}
   .px__eq .px__soft{display:none}
   .px figcaption.px__k{font-size:10px;letter-spacing:.1em}
-  .px__big img{height:62vh}
-  .px__wide img{height:44vh}
+  .px__big img{height:56vh}
+  .px__wide img{height:auto}
   .map{aspect-ratio:4/5}
   .counter{display:none}
 }
