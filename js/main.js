@@ -116,7 +116,7 @@
       const f = Math.max(0, 1 - d / (b.width * 1.1));
       c.style.setProperty('--f', (f * f * (3 - 2 * f)).toFixed(3));
     });
-    if (atlasI) atlasI.textContent = String(best + 1).padStart(2, '0');
+    if (atlasI) atlasI.textContent = String(best + 1).padStart(2, '0'); // cards only (the divider is not a card)
   };
   if (atlas) $('.atlas__viewport').addEventListener('scroll', moveAtlas, { passive: true });
   addEventListener('resize', sizeAtlas);
