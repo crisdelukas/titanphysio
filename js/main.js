@@ -173,7 +173,7 @@
     $$('.pg__open').forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
       $('img', lb).src = a.getAttribute('href'); $('img', lb).alt = $('img', a).alt;
-      $('.lightbox__cap', lb).textContent = (a.closest('figure').querySelector('figcaption') || a.closest('.pg__row').querySelector('.pg__cap')).textContent.replace(/^\d+/, m => m + '  ');
+      $('.lightbox__cap', lb).textContent = (a.closest('figure').querySelector('figcaption')?.textContent || a.getAttribute('aria-label').replace('Open image: ','')).replace(/^\d+/, m => m + '  ');
       lb.showModal();
     }));
     $('.lightbox__close', lb).addEventListener('click', () => lb.close());
