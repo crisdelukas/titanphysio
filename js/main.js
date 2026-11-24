@@ -150,6 +150,19 @@
     map.appendChild(f); $('.map__placeholder', map).remove();
   });
 
+  /* Practice gallery: open each image full size */
+  const lb = $('.lightbox');
+  if (lb) {
+    $$('.pg__open').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      $('img', lb).src = a.getAttribute('href'); $('img', lb).alt = $('img', a).alt;
+      $('.lightbox__cap', lb).textContent = a.closest('figure').querySelector('figcaption').textContent.replace(/^\d+/, m => m + '  ');
+      lb.showModal();
+    }));
+    $('.lightbox__close', lb).addEventListener('click', () => lb.close());
+    lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+  }
+
   /* Contact form: submit via fetch (Formspree), stay on page */
   const form = $('.form'), status = $('.form__status');
   form.addEventListener('submit', async ev => {
