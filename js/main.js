@@ -167,6 +167,26 @@
   });
 
   /* Practice: reveal each large frame like a curtain, then let the photo drift slowly inside it */
+  /* Footer: the light follows the cursor (eased); on touch screens it drifts slowly on its own */
+  const footer = $('.site-footer'), fLight = $('.footer__light');
+  if (footer && fLight) {
+    let tx = .6, ty = .55, cx = tx, cy = ty, running = false, inView = false;
+    const touch = matchMedia('(hover: none)').matches;
+    const step = t => {
+      if (touch && !reduce) { tx = .5 + .28 * Math.sin(t / 2600); ty = .5 + .22 * Math.cos(t / 3400); }
+      cx += (tx - cx) * .06; cy += (ty - cy) * .06;
+      footer.style.setProperty('--fx', (cx * footer.clientWidth).toFixed(1) + 'px');
+      footer.style.setProperty('--fy', (cy * footer.clientHeight).toFixed(1) + 'px');
+      if (inView && !reduce) requestAnimationFrame(step); else running = false;
+    };
+    const start = () => { if (!running) { running = true; requestAnimationFrame(step); } };
+    footer.addEventListener('pointermove', e => {
+      const r = footer.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height; start();
+    });
+    new IntersectionObserver(es => { inView = es[0].isIntersecting; if (inView) start(); }).observe(footer);
+    step(0);
+  }
+
   /* Practice gallery: open each image full size */
   const lb = $('.lightbox');
   if (lb) {
