@@ -289,8 +289,6 @@ p+p{margin-top:12px}
 .sage .card{background:transparent;border-right:1px solid var(--line)}
 .sage .card:last-child{border-right:0}
 .sage .todo{outline-color:rgba(104,31,12,.55)}
-.site-footer.sage{border-top:0}
-.sage .footer__links a:hover{color:var(--base);text-decoration:underline;text-underline-offset:4px}
 .sage ::selection{background:var(--base);color:#a4b8ad}
 
 /* ---------- faq ---------- */
@@ -324,7 +322,14 @@ details p{color:var(--cream-60);padding-bottom:26px;max-width:56ch}
 .form__status{grid-column:1/-1;color:var(--cream);min-height:1em}
 
 /* ---------- footer ---------- */
-.site-footer{position:relative;overflow:hidden;border-top:1px solid var(--cream-12);padding:80px 0 60px}
+.site-footer{position:relative;overflow:hidden;isolation:isolate;background:var(--base);color:var(--cream);padding:clamp(90px,10vw,140px) 0 60px}
+.site-footer>.wrap{position:relative;z-index:1}
+/* same light as the hero halo; follows the cursor with a soft lag */
+.footer__light{position:absolute;z-index:0;left:0;top:0;width:min(56vw,720px);aspect-ratio:1/1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,#ffd276 0%,#ffb449 23%,#f98d25 43%,rgba(231,90,19,.85) 62%,rgba(169,55,17,.3) 82%,rgba(169,55,17,0) 100%);
+  filter:blur(clamp(15px,3vw,48px));opacity:.72;transform:translate3d(var(--fx,40vw),var(--fy,0px),0) translate(-50%,-50%);will-change:transform}
+.footer__links a{transition:color .3s}
+.footer__links a:hover{color:#fff}
 .footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;position:relative;z-index:1}
 .footer__brand{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px}
 .footer__brand .brand__titan svg{height:34px}
