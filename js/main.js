@@ -94,7 +94,9 @@
       const post = Math.max(0, innerHeight - stageEl.getBoundingClientRect().bottom);
       screenY = window.titanLightCenterY(post, innerHeight, .45 * innerHeight + W / 2);
       LIGHT.maxOpacity = window.titanLightOpacity(post);
-    } else { screenY = innerHeight * LIGHT.screenY; LIGHT.maxOpacity = .62; }
+    } else { // compact hero (phones): the light rises out of the join and settles mid-screen
+      screenY = innerHeight * LIGHT.screenY; LIGHT.maxOpacity = .62 * Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * .9)));
+    }
     const cy = reduce ? r.height * .4 : Math.max(0, Math.min(r.height, screenY - r.top));
     const t = cy / r.height;
     const o = LIGHT.maxOpacity * Math.min(1, (1 - t) / LIGHT.fadeOut); // full from the start (continuity), dissolves at the bottom
